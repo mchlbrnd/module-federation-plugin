@@ -5,7 +5,7 @@ export interface ConfigurationContext {
 let _context: ConfigurationContext = {};
 
 export function useWorkspace(workspaceRoot: string): void {
-  _context = {..._context, workspaceRoot};
+  _context = { ..._context, workspaceRoot };
 }
 
 export function getConfigContext(): ConfigurationContext {

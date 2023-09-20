@@ -21,14 +21,14 @@ export const esBuildAdapter: BuildAdapter = createEsBuildAdapter({
 });
 
 export type ReplacementConfig = {
-  file: string, 
-  tryCompensateMissingExports: boolean
+  file: string;
+  tryCompensateMissingExports: boolean;
 };
 
 export interface EsBuildAdapterConfig {
   plugins: esbuild.Plugin[];
-  fileReplacements?: Record<string, string | ReplacementConfig>
-  skipRollup?: boolean,
+  fileReplacements?: Record<string, string | ReplacementConfig>;
+  skipRollup?: boolean;
 }
 
 export function createEsBuildAdapter(config: EsBuildAdapterConfig) {
@@ -70,14 +70,24 @@ export function createEsBuildAdapter(config: EsBuildAdapterConfig) {
   };
 }
 
-function postProcess(config: EsBuildAdapterConfig, entryPoint: string, outfile: string) {
+function postProcess(
+  config: EsBuildAdapterConfig,
+  entryPoint: string,
+  outfile: string
+) {
   if (config.fileReplacements) {
     const replacements = normalize(config.fileReplacements);
-    
-    const normalizedPath = entryPoint.replace(/\\/g, '/');
-    const key = Object.keys(replacements).find(key => normalizedPath.endsWith(key))
 
-    if (key && replacements[key] && replacements[key].tryCompensateMissingExports) {
+    const normalizedPath = entryPoint.replace(/\\/g, '/');
+    const key = Object.keys(replacements).find((key) =>
+      normalizedPath.endsWith(key)
+    );
+
+    if (
+      key &&
+      replacements[key] &&
+      replacements[key].tryCompensateMissingExports
+    ) {
       const file = replacements[key].file;
       compensateExports(file, outfile);
     }
@@ -106,11 +116,13 @@ async function prepareNodePackage(
   entryPoint: string,
   external: string[],
   tmpFolder: string,
-  config: EsBuildAdapterConfig,
+  config: EsBuildAdapterConfig
 ) {
-
   if (config.fileReplacements) {
-    entryPoint = replaceEntryPoint(entryPoint, normalize(config.fileReplacements));
+    entryPoint = replaceEntryPoint(
+      entryPoint,
+      normalize(config.fileReplacements)
+    );
   }
 
   const result = await rollup({
@@ -143,29 +155,35 @@ function inferePkgName(entryPoint: string) {
     .replace(/[^A-Za-z0-9.]/g, '_');
 }
 
-function normalize(config: Record<string, string | ReplacementConfig>): Record<string,ReplacementConfig> {
-  const result: Record<string,ReplacementConfig> = {};
+function normalize(
+  config: Record<string, string | ReplacementConfig>
+): Record<string, ReplacementConfig> {
+  const result: Record<string, ReplacementConfig> = {};
   for (const key in config) {
     if (typeof config[key] === 'string') {
       result[key] = {
         file: config[key] as string,
-        tryCompensateMissingExports: false
-      }
-    }
-    else {
+        tryCompensateMissingExports: false,
+      };
+    } else {
       result[key] = config[key] as ReplacementConfig;
     }
   }
   return result;
 }
 
-function replaceEntryPoint(entryPoint: string, fileReplacements: Record<string, ReplacementConfig>): string {
+function replaceEntryPoint(
+  entryPoint: string,
+  fileReplacements: Record<string, ReplacementConfig>
+): string {
   entryPoint = entryPoint.replace(/\\/g, '/');
- 
-  for(const key in fileReplacements) {
-    entryPoint = entryPoint.replace(new RegExp(`${key}$`), fileReplacements[key].file);
+
+  for (const key in fileReplacements) {
+    entryPoint = entryPoint.replace(
+      new RegExp(`${key}$`),
+      fileReplacements[key].file
+    );
   }
 
   return entryPoint;
 }
-

@@ -21,14 +21,17 @@ export type VersionMap = Record<string, string>;
 export type PackageJsonInfo = {
   content: any;
   directory: string;
-}
+};
 
 const packageCache: Record<string, PackageJsonInfo[]> = {};
 
-export function findPackageJsonFiles(project: string, workspace: string): string[] {
+export function findPackageJsonFiles(
+  project: string,
+  workspace: string
+): string[] {
   return expandFolders(project, workspace)
-    .map(f => path.join(f, 'package.json'))
-    .filter(f => fs.existsSync(f));
+    .map((f) => path.join(f, 'package.json'))
+    .filter((f) => fs.existsSync(f));
 }
 
 export function expandFolders(child: string, parent: string): string[] {
@@ -37,32 +40,31 @@ export function expandFolders(child: string, parent: string): string[] {
   child = normalize(child, true);
 
   if (!child.startsWith(parent)) {
-    throw new Error(`Workspace folder ${path} needs to be a parent of the project folder ${child}`);
+    throw new Error(
+      `Workspace folder ${path} needs to be a parent of the project folder ${child}`
+    );
   }
 
   let current = child;
 
   while (current !== parent) {
     result.push(current);
-    
+
     const cand = normalize(path.dirname(current), true);
     if (cand === current) {
-      break
-    };
+      break;
+    }
     current = cand;
   }
   result.push(parent);
   return result;
 }
 
-
 export function getPackageInfo(
   packageName: string,
   workspaceRoot: string
 ): PackageInfo | null {
-
   workspaceRoot = normalize(workspaceRoot, true);
-
 
   const packageJsonInfos = getPackageJsonFiles(workspaceRoot, workspaceRoot);
 
@@ -81,14 +83,19 @@ function getVersionMapCacheKey(project: string, workspace: string): string {
   return `${project}**${workspace}`;
 }
 
-export function getVersionMaps(project: string, workspace: string): VersionMap[] {
-  return getPackageJsonFiles(project, workspace)
-    .map(json => ({
-      ...json.content['dependencies']
-    }));
+export function getVersionMaps(
+  project: string,
+  workspace: string
+): VersionMap[] {
+  return getPackageJsonFiles(project, workspace).map((json) => ({
+    ...json.content['dependencies'],
+  }));
 }
 
-export function getPackageJsonFiles(project: string, workspace: string): PackageJsonInfo[] {
+export function getPackageJsonFiles(
+  project: string,
+  workspace: string
+): PackageJsonInfo[] {
   const cacheKey = getVersionMapCacheKey(project, workspace);
 
   let maps = packageCache[cacheKey];
@@ -97,21 +104,24 @@ export function getPackageJsonFiles(project: string, workspace: string): Package
     return maps;
   }
 
-  maps = findPackageJsonFiles(project, workspace)
-    .map(f => {
-      const content = JSON.parse(fs.readFileSync(f, 'utf-8'));
-      const directory = normalize(path.dirname(f), true);
-      const result: PackageJsonInfo = {
-        content, directory
-      };
-      return result;
-    });
+  maps = findPackageJsonFiles(project, workspace).map((f) => {
+    const content = JSON.parse(fs.readFileSync(f, 'utf-8'));
+    const directory = normalize(path.dirname(f), true);
+    const result: PackageJsonInfo = {
+      content,
+      directory,
+    };
+    return result;
+  });
 
   packageCache[cacheKey] = maps;
   return maps;
 }
 
-export function findDepPackageJson(packageName: string, projectRoot: string): string | null {
+export function findDepPackageJson(
+  packageName: string,
+  projectRoot: string
+): string | null {
   const mainPkgName = getPkgFolder(packageName);
 
   let mainPkgPath = path.join(projectRoot, 'node_modules', mainPkgName);
@@ -120,7 +130,6 @@ export function findDepPackageJson(packageName: string, projectRoot: string): st
   let directory = projectRoot;
 
   while (path.dirname(directory) !== directory) {
-
     if (fs.existsSync(mainPkgJsonPath)) {
       break;
     }
@@ -134,19 +143,19 @@ export function findDepPackageJson(packageName: string, projectRoot: string): st
   if (!fs.existsSync(mainPkgJsonPath)) {
     // TODO: Add logger
     // context.logger.warn('No package.json found for ' + packageName);
-    logger.verbose('No package.json found for ' + packageName + ' in ' + mainPkgPath);
+    logger.verbose(
+      'No package.json found for ' + packageName + ' in ' + mainPkgPath
+    );
 
     return null;
   }
   return mainPkgJsonPath;
-
 }
 
 export function _getPackageInfo(
   packageName: string,
-  directory: string,
+  directory: string
 ): PackageInfo | null {
-
   const mainPkgName = getPkgFolder(packageName);
   const mainPkgJsonPath = findDepPackageJson(packageName, directory);
 
@@ -179,13 +188,13 @@ export function _getPackageInfo(
 
   if (typeof cand === 'string') {
     return {
-        entryPoint: path.join(mainPkgPath, cand),
-        packageName,
-        version,
-        esm,
+      entryPoint: path.join(mainPkgPath, cand),
+      packageName,
+      version,
+      esm,
     };
   }
-  
+
   cand = mainPkgJson?.exports?.[relSecondaryPath]?.import;
 
   if (typeof cand === 'object') {

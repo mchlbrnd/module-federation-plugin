@@ -158,10 +158,7 @@ function nxBuildersAvailable(tree: Tree): boolean {
   return semver.satisfies(minVersion, '>=12.9.0');
 }
 
-function infereNxBuilderNames(
-  tree: Tree
-): { dev: string; prod: string } {
-
+function infereNxBuilderNames(tree: Tree): { dev: string; prod: string } {
   const defaultResult = {
     dev: '@nrwl/angular:webpack-dev-server',
     prod: '@nrwl/angular:webpack-browser',
