@@ -1,0 +1,33 @@
+{
+  "name": "@angular-architects/module-federation-runtime",
+  "license": "MIT",
+  "version": "15.0.3",
+  "peerDependencies": {
+    "@angular/common": ">=15.0.0",
+    "@angular/core": ">=15.0.0",
+    "@angular/platform-browser-dynamic": "14.1.1"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "module": "fesm2015/angular-architects-module-federation-runtime.mjs",
+  "es2020": "fesm2020/angular-architects-module-federation-runtime.mjs",
+  "esm2020": "esm2020/angular-architects-module-federation-runtime.mjs",
+  "fesm2020": "fesm2020/angular-architects-module-federation-runtime.mjs",
+  "fesm2015": "fesm2015/angular-architects-module-federation-runtime.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/angular-architects-module-federation-runtime.mjs",
+      "es2020": "./fesm2020/angular-architects-module-federation-runtime.mjs",
+      "es2015": "./fesm2015/angular-architects-module-federation-runtime.mjs",
+      "node": "./fesm2015/angular-architects-module-federation-runtime.mjs",
+      "default": "./fesm2020/angular-architects-module-federation-runtime.mjs"
+    }
+  },
+  "sideEffects": false
+}
