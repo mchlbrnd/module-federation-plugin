@@ -6,7 +6,7 @@
 import { rollup } from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
 import { externals } from 'rollup-plugin-node-externals';
-import { logger } from '@softarc/native-federation/build';
+import { logger } from '@softarc/native-federation/build.js'
 import { terser } from 'rollup-plugin-terser';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -3,12 +3,12 @@ import * as path from 'path';
 
 import { lookup } from 'mrmime';
 import { Connect, ViteDevServer } from 'vite';
-import { devExternalsMixin } from './dev-externals-mixin';
-import { filterExternals } from './externals-skip-list';
+import { devExternalsMixin } from './dev-externals-mixin.js';
+import { filterExternals } from './externals-skip-list.js';
 import {
   BuildHelperParams,
   federationBuilder,
-} from '@softarc/native-federation/build';
+} from '@softarc/native-federation/build.js'
 import { FederationInfo } from '@softarc/native-federation-runtime';
 
 type FedInfoRef = { federationInfo: FederationInfo };
@@ -40,7 +40,7 @@ export const federation = (params: BuildHelperParams) => {
 {
 "shimMode": true
 }
-</script>                    
+</script>
 <script src="polyfills.js" type="module">
 `;
       html = html.replace(/type="module"/g, 'type="module-shim"');

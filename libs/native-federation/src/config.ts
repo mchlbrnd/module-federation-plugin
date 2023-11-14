@@ -1,6 +1,6 @@
-export { withNativeFederation } from '@softarc/native-federation/build';
+export { withNativeFederation } from '@softarc/native-federation/build.js';
 export {
   findRootTsConfigJson,
   share,
   shareAll,
-} from '@softarc/native-federation/build';
+} from '@softarc/native-federation/build.js';

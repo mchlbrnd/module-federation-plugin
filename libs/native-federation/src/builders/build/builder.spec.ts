@@ -1,10 +1,10 @@
 import { Architect } from '@angular-devkit/architect';
-import { TestingArchitectHost } from '@angular-devkit/architect/testing';
+import { TestingArchitectHost } from '@angular-devkit/architect/testing/index.js'
 import { schema } from '@angular-devkit/core';
 import { join } from 'path';
-import { BuildBuilderSchema } from './schema';
+import { NfBuilderSchema } from './schema.js';
 
-const options: BuildBuilderSchema = {};
+const options: Partial<NfBuilderSchema> = {};
 
 describe('Command Runner Builder', () => {
   let architect: Architect;

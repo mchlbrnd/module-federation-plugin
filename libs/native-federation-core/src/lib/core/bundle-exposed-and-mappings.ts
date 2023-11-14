@@ -1,14 +1,14 @@
 import path from 'path';
-import { NormalizedFederationConfig } from '../config/federation-config';
-import { FederationOptions } from './federation-options';
-import { bundle } from '../utils/build-utils';
+import { NormalizedFederationConfig } from '../config/federation-config.js';
+import { FederationOptions } from './federation-options.js';
+import { bundle } from '../utils/build-utils.js';
 import { ExposesInfo, SharedInfo } from '@softarc/native-federation-runtime';
 import {
   createBuildResultMap,
   lookupInResultMap,
-} from '../utils/build-result-map';
-import { logger } from '../utils/logger';
-import { normalize } from '../utils/normalize';
+} from '../utils/build-result-map.js'
+import { logger } from '../utils/logger.js';
+import { normalize } from '../utils/normalize.js';
 
 export interface ArtefactInfo {
   mappings: SharedInfo[];

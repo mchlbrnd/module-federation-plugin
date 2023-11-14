@@ -1,5 +1,5 @@
-import { logger } from '../utils/logger';
-import { MappedPath } from '../utils/mapped-paths';
+import { logger } from '../utils/logger.js';
+import { MappedPath } from '../utils/mapped-paths.js';
 
 let _buildAdapter: BuildAdapter = async () => {
   // TODO: add logger

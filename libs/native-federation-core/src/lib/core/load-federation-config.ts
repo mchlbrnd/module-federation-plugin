@@ -1,5 +1,5 @@
-import { NormalizedFederationConfig } from '../config/federation-config';
-import { FederationOptions } from './federation-options';
+import { NormalizedFederationConfig } from '../config/federation-config.js';
+import { FederationOptions } from './federation-options.js';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -15,6 +15,9 @@ export async function loadFederationConfig(
     throw new Error('Expected ' + fullConfigPath);
   }
 
-  const config = (await import(fullConfigPath)) as NormalizedFederationConfig;
-  return config;
+  const fnOrConfig = (await import('file://' + fullConfigPath) as any).default;
+  return Promise.resolve(
+    typeof fnOrConfig === 'function' ?
+      fnOrConfig() :
+      fnOrConfig);
 }

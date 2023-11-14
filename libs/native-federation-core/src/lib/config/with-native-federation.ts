@@ -1,5 +1,5 @@
-import { getMappedPaths, MappedPath } from '../utils/mapped-paths';
-import { shareAll, share, findRootTsConfigJson } from './share-utils';
+import { getMappedPaths, MappedPath } from '../utils/mapped-paths.js';
+import { shareAll, share, findRootTsConfigJson } from './share-utils.js';
 import {
   FederationConfig,
   NormalizedFederationConfig,
@@ -9,8 +9,8 @@ import {
   isInSkipList,
   PreparedSkipList,
   prepareSkipList,
-} from '../core/default-skip-list';
-import { logger } from '../utils/logger';
+} from '../core/default-skip-list.js'
+import { logger } from '../utils/logger.js';
 
 export function withNativeFederation(
   config: FederationConfig

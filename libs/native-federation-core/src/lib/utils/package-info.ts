@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { logger } from './logger';
-import { normalize } from './normalize';
+import { logger } from './logger.js';
+import { normalize } from './normalize.js';
 
 export interface PackageInfo {
   packageName: string;

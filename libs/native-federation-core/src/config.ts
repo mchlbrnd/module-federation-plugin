@@ -1,2 +1,2 @@
 // For parity with our other libs
-export * from './build';
+export * from './build.js'

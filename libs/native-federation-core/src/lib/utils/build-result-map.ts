@@ -1,5 +1,5 @@
 import path from 'path';
-import { BuildResult } from '../core/build-adapter';
+import { BuildResult } from '../core/build-adapter.js';
 
 export function createBuildResultMap(
   buildResult: BuildResult[],

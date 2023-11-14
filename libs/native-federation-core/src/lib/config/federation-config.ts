@@ -1,5 +1,5 @@
-import { SkipList } from '../core/default-skip-list';
-import { MappedPath } from '../utils/mapped-paths';
+import { SkipList } from '../core/default-skip-list.js';
+import { MappedPath } from '../utils/mapped-paths.js';
 
 export interface SharedConfig {
   singleton?: boolean;

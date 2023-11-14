@@ -1,8 +1,8 @@
-import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing.js'
 import { Tree, readProjectConfiguration } from '@nx/devkit';
 
-import generator from './generator';
-import { NativeFederationGeneratorSchema } from './schema';
+import generator from './generator.js';
+import { NativeFederationGeneratorSchema } from './schema.js';
 
 describe('native-federation generator', () => {
   let appTree: Tree;

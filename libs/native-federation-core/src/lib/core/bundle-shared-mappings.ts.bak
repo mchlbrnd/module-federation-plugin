@@ -1,12 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { NormalizedFederationConfig } from '../config/federation-config';
-import { bundle } from '../utils/build-utils';
+import { NormalizedFederationConfig } from '../config/federation-config.js';
+import { bundle } from '../utils/build-utils.js';
 import { SharedInfo } from '@softarc/native-federation-runtime';
-import { hashFile } from '../utils/hash-file';
-import { FederationOptions } from '../core/federation-options';
-import { logger } from '../utils/logger';
-import { normalize } from '../utils/normalize';
+import { hashFile } from '../utils/hash-file.js';
+import { FederationOptions } from '../core/federation-options.js';
+import { logger } from '../utils/logger.js';
+import { normalize } from '../utils/normalize.js';
 
 export async function bundleSharedMappings(
   config: NormalizedFederationConfig,

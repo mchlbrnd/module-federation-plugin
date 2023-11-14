@@ -4,13 +4,13 @@
 //   createBuilder,
 // } from '@angular-devkit/architect';
 
-// import { setTweaks, builder  } from '@angular-architects/build-angular/src/builders/dev-server';
-// import { FederationOptions, getExternals, loadFederationConfig } from '@softarc/native-federation/build';
+// import { setTweaks, builder  } from '@angular-architects/build-angular/src/builders/dev-server.js'
+// import { FederationOptions, getExternals, loadFederationConfig } from '@softarc/native-federation/build.js'
 // import * as path from 'path';
-// import { createAngularBuildAdapter } from '../../utils/angular-esbuild-adapter';
+// import { createAngularBuildAdapter } from '../../utils/angular-esbuild-adapter.js';
 // import { targetFromTargetString } from '@angular-devkit/architect';
 // import { Subject, lastValueFrom } from 'rxjs';
-// import { federation } from '../../plugin';
+// import { federation } from '../../plugin.js';
 
 // import { watch } from 'chokidar';
 

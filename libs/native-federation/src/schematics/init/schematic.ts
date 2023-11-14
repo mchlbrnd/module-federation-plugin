@@ -10,14 +10,14 @@ import {
   noop,
 } from '@angular-devkit/schematics';
 
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks/index.js'
 import { strings } from '@angular-devkit/core';
-import { MfSchematicSchema } from './schema';
+import { MfSchematicSchema } from './schema.js';
 
 import {
   addPackageJsonDependency,
   NodeDependencyType,
-} from '@schematics/angular/utility/dependencies';
+} from '@schematics/angular/utility/dependencies.js'
 
 import * as path from 'path';
 

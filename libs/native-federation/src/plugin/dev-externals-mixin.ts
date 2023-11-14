@@ -1,5 +1,5 @@
-import { federationBuilder } from '@softarc/native-federation/build';
-import { filterExternals } from './externals-skip-list';
+import { federationBuilder } from '@softarc/native-federation/build.js'
+import { filterExternals } from './externals-skip-list.js';
 
 // see: https://github.com/vitejs/vite/issues/6393#issuecomment-1006819717
 

@@ -1,1 +1,1 @@
-export * from './lib/adapter';
+export * from './lib/adapter.js'

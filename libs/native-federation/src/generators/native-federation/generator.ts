@@ -8,7 +8,7 @@ import {
   Tree,
 } from '@nx/devkit';
 import * as path from 'path';
-import { NativeFederationGeneratorSchema } from './schema';
+import { NativeFederationGeneratorSchema } from './schema.js';
 
 interface NormalizedSchema extends NativeFederationGeneratorSchema {
   projectName: string;

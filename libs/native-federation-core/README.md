@@ -83,7 +83,7 @@ import * as esbuild from 'esbuild';
 import * as path from 'path';
 import * as fs from 'fs';
 import { esBuildAdapter } from '@softarc/native-federation-esbuild';
-import { federationBuilder } from '@softarc/native-federation/build';
+import { federationBuilder } from '@softarc/native-federation/build.js'
 
 
 const projectName = 'shell';
@@ -333,7 +333,7 @@ As the community is moving to EcmaScrpt Modules, we expect that these issues wil
 One of them is `fileReplacemnts`:
 
 ```javascript
-import { reactReplacements } from '@softarc/native-federation-esbuild/src/lib/react-replacements';
+import { reactReplacements } from '@softarc/native-federation-esbuild/src/lib/react-replacements.js'
 import { createEsBuildAdapter } from '@softarc/native-federation-esbuild';
 
 [...]

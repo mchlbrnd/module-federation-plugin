@@ -1,22 +1,22 @@
-import path = require('path');
-import fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 import { cwd } from 'process';
-import { SharedConfig } from './federation-config';
+import { SharedConfig } from './federation-config.js';
 import {
   DEFAULT_SKIP_LIST,
   isInSkipList,
   PREPARED_DEFAULT_SKIP_LIST,
   prepareSkipList,
   SkipList,
-} from '../core/default-skip-list';
+} from '../core/default-skip-list.js'
 import {
   findDepPackageJson,
   findPackageJsonFiles,
   getVersionMaps,
   VersionMap,
-} from '../utils/package-info';
-import { getConfigContext } from './configuration-context';
-import { logger } from '../utils/logger';
+} from '../utils/package-info.js'
+import { getConfigContext } from './configuration-context.js';
+import { logger } from '../utils/logger.js';
 
 let inferVersion = false;
 

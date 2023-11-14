@@ -1,9 +1,9 @@
 import * as browserSync from 'browser-sync';
-import { NfBuilderSchema } from '../builders/build/schema';
-import { BuildResult, MemResults } from './mem-resuts';
+import { NfBuilderSchema } from '../builders/build/schema.js';
+import { BuildResult, MemResults } from './mem-resuts.js';
 import { extname } from 'path';
 import { lookup } from 'mrmime';
-import { updateScriptTags } from './updateIndexHtml';
+import { updateScriptTags } from './updateIndexHtml.js';
 
 let server: browserSync.BrowserSyncInstance;
 

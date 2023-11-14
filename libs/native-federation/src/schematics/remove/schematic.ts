@@ -1,6 +1,6 @@
 import { Rule, Tree, noop } from '@angular-devkit/schematics';
 
-import { MfSchematicSchema } from './schema';
+import { MfSchematicSchema } from './schema.js';
 
 import * as path from 'path';
 

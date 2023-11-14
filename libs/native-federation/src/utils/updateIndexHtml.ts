@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { FederationOptions } from '@softarc/native-federation/build';
+import { FederationOptions } from '@softarc/native-federation/build.js'
 
 export function updateIndexHtml(fedOptions: FederationOptions) {
   const outputPath = path.join(fedOptions.workspaceRoot, fedOptions.outputPath);

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { SharedInfo } from '@softarc/native-federation-runtime';
-import { FederationOptions } from './federation-options';
+import { FederationOptions } from './federation-options.js';
 
 export function writeImportMap(
   sharedInfo: SharedInfo[],

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { FederationInfo } from '@softarc/native-federation-runtime';
-import { FederationOptions } from './federation-options';
+import { FederationOptions } from './federation-options.js';
 
 export function writeFederationInfo(
   federationInfo: FederationInfo,

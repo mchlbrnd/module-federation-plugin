@@ -2,38 +2,39 @@ import {
   BuildAdapter,
   logger,
   MappedPath,
-} from '@softarc/native-federation/build';
+} from '@softarc/native-federation/build.js'
 import * as esbuild from 'esbuild';
-import { createCompilerPlugin } from '@angular-devkit/build-angular/src/tools/esbuild/angular/compiler-plugin';
+
+import { createCompilerPlugin } from '@angular-devkit/build-angular/src/tools/esbuild/angular/compiler-plugin.js'
 
 import { BuilderContext } from '@angular-devkit/architect';
 
-import { transformSupportedBrowsersToTargets } from './transform';
+import { transformSupportedBrowsersToTargets } from './transform.js';
 
 // TODO: Use this import instead in next version:
 // import {
 //   transformSupportedBrowsersToTargets
 // } from '@angular-devkit/build-angular/src/tools/esbuild/utils';
 
-import { createCompilerPluginOptions } from '@angular-devkit/build-angular/src/tools/esbuild/compiler-plugin-options';
+import { createCompilerPluginOptions } from '@angular-devkit/build-angular/src/tools/esbuild/compiler-plugin-options.js'
 
-import { findTailwindConfigurationFile } from '@angular-devkit/build-angular/src/utils/tailwind';
+import { findTailwindConfigurationFile } from '@angular-devkit/build-angular/src/utils/tailwind.js'
 
-import { getSupportedBrowsers } from '@angular-devkit/build-angular/src/utils/supported-browsers';
+import { getSupportedBrowsers } from '@angular-devkit/build-angular/src/utils/supported-browsers.js'
 import {
   normalizeOptimization,
   normalizeSourceMaps,
-} from '@angular-devkit/build-angular/src/utils';
+} from '@angular-devkit/build-angular/src/utils/index.js';
 import { createRequire } from 'node:module';
 
-import { Schema as EsBuildBuilderOptions } from '@angular-devkit/build-angular/src/builders/browser-esbuild/schema';
+import { Schema as EsBuildBuilderOptions } from '@angular-devkit/build-angular/src/builders/browser-esbuild/schema.js'
 
-import { createSharedMappingsPlugin } from './shared-mappings-plugin';
+import { createSharedMappingsPlugin } from './shared-mappings-plugin.js';
 import * as fs from 'fs';
 import * as path from 'path';
 
 import { PluginItem, transformAsync } from '@babel/core';
-import { RebuildEvents, RebuildHubs } from './rebuild-events';
+import { RebuildEvents, RebuildHubs } from './rebuild-events.js';
 import {
   BuildKind,
   BuildResult,
@@ -259,7 +260,7 @@ async function runEsbuild(
     platform: 'browser',
     format: 'esm',
     target: ['esnext'],
-    plugins: plugins || [
+    plugins: (plugins || [
       createCompilerPlugin(
         pluginOptions.pluginOptions,
         pluginOptions.styleOptions
@@ -286,8 +287,8 @@ async function runEsbuild(
       ),
       ...(mappedPaths && mappedPaths.length > 0
         ? [createSharedMappingsPlugin(mappedPaths)]
-        : []),
-    ],
+        : [])
+    ] as esbuild.Plugin[]),
     define: {
       ...(!dev ? { ngDevMode: 'false' } : {}),
       ngJitMode: 'false',

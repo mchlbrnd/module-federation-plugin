@@ -3,7 +3,7 @@ import {
   BuildAdapterOptions,
   BuildResult,
   logger,
-} from '@softarc/native-federation/build';
+} from '@softarc/native-federation/src/build.js'
 import * as esbuild from 'esbuild';
 import { rollup } from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
@@ -34,7 +34,7 @@ export interface EsBuildAdapterConfig {
   loader?: { [ext: string]: esbuild.Loader };
 }
 
-export function createEsBuildAdapter(config: EsBuildAdapterConfig) {
+export function createEsBuildAdapter(config: EsBuildAdapterConfig): any {
   if (!config.compensateExports) {
     config.compensateExports = [new RegExp('/react/')];
   }

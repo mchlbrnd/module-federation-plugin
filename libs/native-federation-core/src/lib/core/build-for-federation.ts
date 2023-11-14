@@ -1,15 +1,15 @@
-import { NormalizedFederationConfig } from '../config/federation-config';
+import { NormalizedFederationConfig } from '../config/federation-config.js';
 import { FederationInfo } from '@softarc/native-federation-runtime';
-import { FederationOptions } from './federation-options';
-import { writeImportMap } from './write-import-map';
-import { writeFederationInfo } from './write-federation-info';
-import { bundleShared } from './bundle-shared';
+import { FederationOptions } from './federation-options.js';
+import { writeImportMap } from './write-import-map.js';
+import { writeFederationInfo } from './write-federation-info.js';
+import { bundleShared } from './bundle-shared.js';
 import {
   ArtefactInfo,
   bundleExposedAndMappings,
   describeExposed,
   describeSharedMappings,
-} from './bundle-exposed-and-mappings';
+} from './bundle-exposed-and-mappings.js';
 
 export interface BuildParams {
   skipMappingsAndExposed: boolean;

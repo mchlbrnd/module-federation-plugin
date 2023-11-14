@@ -3,13 +3,13 @@ import {
   getConfigContext,
   usePackageJson,
   useWorkspace,
-} from '../config/configuration-context';
-import { NormalizedFederationConfig } from '../config/federation-config';
-import { BuildAdapter, setBuildAdapter } from './build-adapter';
-import { buildForFederation, defaultBuildParams } from './build-for-federation';
-import { FederationOptions } from './federation-options';
-import { getExternals } from './get-externals';
-import { loadFederationConfig } from './load-federation-config';
+} from '../config/configuration-context.js'
+import { NormalizedFederationConfig } from '../config/federation-config.js';
+import { BuildAdapter, setBuildAdapter } from './build-adapter.js';
+import { buildForFederation, defaultBuildParams } from './build-for-federation.js';
+import { FederationOptions } from './federation-options.js';
+import { getExternals } from './get-externals.js';
+import { loadFederationConfig } from './load-federation-config.js';
 
 export interface BuildHelperParams {
   options: FederationOptions;

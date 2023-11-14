@@ -5,39 +5,39 @@ import {
   createBuilder,
 } from '@angular-devkit/architect';
 
-import { Schema } from '@angular-devkit/build-angular/src/builders/browser-esbuild/schema';
+import { Schema } from '@angular-devkit/build-angular/src/builders/browser-esbuild/schema.js'
 
-import { buildEsbuildBrowser } from '@angular-devkit/build-angular/src/builders/browser-esbuild';
+import { buildEsbuildBrowser } from '@angular-devkit/build-angular/src/builders/browser-esbuild/index.js'
 
 import * as path from 'path';
-import { setLogLevel, logger } from '@softarc/native-federation/build';
+import { setLogLevel, logger } from '@softarc/native-federation/build.js'
 
-import { FederationOptions } from '@softarc/native-federation/build';
-import { setBuildAdapter } from '@softarc/native-federation/build';
+import { FederationOptions } from '@softarc/native-federation/build.js'
+import { setBuildAdapter } from '@softarc/native-federation/build.js'
 import {
   createAngularBuildAdapter,
   setMemResultHandler,
-} from '../../utils/angular-esbuild-adapter';
-import { getExternals } from '@softarc/native-federation/build';
-import { loadFederationConfig } from '@softarc/native-federation/build';
-import { buildForFederation } from '@softarc/native-federation/build';
+} from '../../utils/angular-esbuild-adapter.js'
+import { getExternals } from '@softarc/native-federation/build.js'
+import { loadFederationConfig } from '@softarc/native-federation/build.js'
+import { buildForFederation } from '@softarc/native-federation/build.js'
 import { targetFromTargetString } from '@angular-devkit/architect';
 
-import { NfBuilderSchema } from './schema';
+import { NfBuilderSchema } from './schema.js';
 import {
   reloadBrowser,
   reloadShell,
   setError,
   startServer,
-} from '../../utils/dev-server';
-import { RebuildHubs } from '../../utils/rebuild-events';
-import { updateIndexHtml } from '../../utils/updateIndexHtml';
+} from '../../utils/dev-server.js'
+import { RebuildHubs } from '../../utils/rebuild-events.js';
+import { updateIndexHtml } from '../../utils/updateIndexHtml.js';
 import { existsSync, mkdirSync } from 'fs';
 import {
   EsBuildResult,
   MemResults,
   NgCliAssetResult,
-} from '../../utils/mem-resuts';
+} from '../../utils/mem-resuts.js'
 import { JsonObject } from '@angular-devkit/core';
 
 export async function* runBuilder(
