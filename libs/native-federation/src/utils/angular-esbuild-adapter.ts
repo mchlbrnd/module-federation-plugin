@@ -39,7 +39,7 @@ import {
   BuildKind,
   BuildResult,
   EntryPoint,
-} from 'libs/native-federation-core/src/lib/core/build-adapter';
+} from '../../../native-federation-core/src/lib/core/build-adapter.js';
 
 // const fesmFolderRegExp = /[/\\]fesm\d+[/\\]/;
 
@@ -260,35 +260,37 @@ async function runEsbuild(
     platform: 'browser',
     format: 'esm',
     target: ['esnext'],
-    plugins: (plugins || [
-      createCompilerPlugin(
-        pluginOptions.pluginOptions,
-        pluginOptions.styleOptions
+    plugins:
+      plugins ||
+      ([
+        createCompilerPlugin(
+          pluginOptions.pluginOptions,
+          pluginOptions.styleOptions
 
-        // TODO: Once available, use helper functions
-        //  for creating these config objects:
-        //  @angular_devkit/build_angular/src/tools/esbuild/compiler-plugin-options.ts
-        // {
-        //   jit: false,
-        //   sourcemap: dev,
-        //   tsconfig: tsConfigPath,
-        //   advancedOptimizations: !dev,
-        //   thirdPartySourcemaps: false,
-        // },
-        // {
-        //   optimization: !dev,
-        //   sourcemap: dev ? 'inline' : false,
-        //   workspaceRoot: __dirname,
-        //   inlineStyleLanguage: builderOptions.inlineStyleLanguage,
-        //   // browsers: browsers,
+          // TODO: Once available, use helper functions
+          //  for creating these config objects:
+          //  @angular_devkit/build_angular/src/tools/esbuild/compiler-plugin-options.ts
+          // {
+          //   jit: false,
+          //   sourcemap: dev,
+          //   tsconfig: tsConfigPath,
+          //   advancedOptimizations: !dev,
+          //   thirdPartySourcemaps: false,
+          // },
+          // {
+          //   optimization: !dev,
+          //   sourcemap: dev ? 'inline' : false,
+          //   workspaceRoot: __dirname,
+          //   inlineStyleLanguage: builderOptions.inlineStyleLanguage,
+          //   // browsers: browsers,
 
-        //   target: target,
-        // }
-      ),
-      ...(mappedPaths && mappedPaths.length > 0
-        ? [createSharedMappingsPlugin(mappedPaths)]
-        : [])
-    ] as esbuild.Plugin[]),
+          //   target: target,
+          // }
+        ),
+        ...(mappedPaths && mappedPaths.length > 0
+          ? [createSharedMappingsPlugin(mappedPaths)]
+          : []),
+      ] as any),
     define: {
       ...(!dev ? { ngDevMode: 'false' } : {}),
       ngJitMode: 'false',
